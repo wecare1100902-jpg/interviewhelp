@@ -106,8 +106,11 @@ export async function POST(request: NextRequest): Promise<NextResponse<EvaluateR
       );
     }
 
+    // DEBUG: temporarily expose error details for diagnosis
+    const errMsg = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
+    const errStack = err instanceof Error ? err.stack?.split('\n').slice(0, 5).join(' | ') : '';
     return NextResponse.json(
-      { success: false, error: '評估過程發生錯誤，請稍後再試。' },
+      { success: false, error: `評估過程發生錯誤：${errMsg} [${errStack}]` },
       { status: 500 },
     );
   }
