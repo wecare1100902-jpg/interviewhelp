@@ -9,9 +9,7 @@ export default function Home() {
       <main className="mx-auto max-w-5xl px-4 py-8">
         {/* Hero */}
         <section className="mb-12 text-center">
-          <h1 className="mb-4 text-4xl font-bold tracking-tight">
-            AI 候選人評估工具
-          </h1>
+          <h1 className="mb-4 text-4xl font-bold tracking-tight">AI 候選人評估工具</h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
             面試官專用。上傳候選人 CV，AI 自動比對職缺需求，
             產生專業評估報告、面試問題建議，幫助你做出更好的招募決策。
@@ -69,10 +67,7 @@ export default function Home() {
               title="五維度評估"
               desc="技術適配、經驗相關性、成就品質、文化適配、成長潛力 — 全面評估候選人"
             />
-            <FeatureCard
-              title="紅旗偵測"
-              desc="自動識別短期跳槽、職涯空窗、誇大嫌疑等潛在風險"
-            />
+            <FeatureCard title="紅旗偵測" desc="自動識別短期跳槽、職涯空窗、誇大嫌疑等潛在風險" />
             <FeatureCard
               title="面試問題建議"
               desc="根據候選人履歷生成技術驗證、行為面試、經驗深挖等針對性問題"

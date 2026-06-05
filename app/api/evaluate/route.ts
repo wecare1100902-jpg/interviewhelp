@@ -32,10 +32,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<EvaluateR
     }
 
     if (file.size > MAX_FILE_SIZE) {
-      return NextResponse.json(
-        { success: false, error: '檔案大小不可超過 10MB' },
-        { status: 400 },
-      );
+      return NextResponse.json({ success: false, error: '檔案大小不可超過 10MB' }, { status: 400 });
     }
 
     // Validate MIME type

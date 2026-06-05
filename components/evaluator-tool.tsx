@@ -296,7 +296,9 @@ export function EvaluatorTool() {
       )}
 
       {/* Results */}
-      {viewState === 'success' && result && <EvaluationReport result={result} onReset={handleReset} />}
+      {viewState === 'success' && result && (
+        <EvaluationReport result={result} onReset={handleReset} />
+      )}
     </div>
   );
 }
@@ -328,9 +330,7 @@ function EvaluationReport({
                 {result.scoreJustification.letterGrade}
               </span>
             </div>
-            {result.candidateName && (
-              <p className="mt-1 text-sm">候選人：{result.candidateName}</p>
-            )}
+            {result.candidateName && <p className="mt-1 text-sm">候選人：{result.candidateName}</p>}
           </div>
           <Button variant="outline" onClick={onReset}>
             評估下一位
@@ -392,7 +392,11 @@ function EvaluationReport({
         </CardHeader>
         <CardContent className="grid gap-4 md:grid-cols-2">
           <SkillList title="高度匹配" items={result.skillsAssessment.strongMatches} color="green" />
-          <SkillList title="部分匹配" items={result.skillsAssessment.partialMatches} color="yellow" />
+          <SkillList
+            title="部分匹配"
+            items={result.skillsAssessment.partialMatches}
+            color="yellow"
+          />
           <SkillList
             title="缺少關鍵技能"
             items={result.skillsAssessment.missingCritical}
@@ -477,7 +481,11 @@ function EvaluationReport({
                           : 'bg-gray-100 text-gray-700'
                     }`}
                   >
-                    {c.severity === 'high' ? '高風險' : c.severity === 'medium' ? '中風險' : '低風險'}
+                    {c.severity === 'high'
+                      ? '高風險'
+                      : c.severity === 'medium'
+                        ? '中風險'
+                        : '低風險'}
                   </span>
                 </div>
                 <p className="text-xs text-muted-foreground">{c.description}</p>

@@ -2,11 +2,7 @@
 // Candidate Evaluator — Azure OpenAI integration
 // ──────────────────────────────────────────────────────────────────────────────
 
-import {
-  chatCompletionWithMeta,
-  parseJsonResponse,
-  AnalysisTruncatedError,
-} from './openai-client';
+import { chatCompletionWithMeta, parseJsonResponse, AnalysisTruncatedError } from './openai-client';
 import {
   CANDIDATE_EVAL_SYSTEM_PROMPT,
   buildCandidateEvalUserPrompt,

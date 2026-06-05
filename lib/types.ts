@@ -8,7 +8,12 @@ export interface CandidateEvaluation {
   candidateName: string | null;
 
   /** Verdict: strongly_recommend | recommend | neutral | not_recommend | strongly_not_recommend */
-  verdict: 'strongly_recommend' | 'recommend' | 'neutral' | 'not_recommend' | 'strongly_not_recommend';
+  verdict:
+    | 'strongly_recommend'
+    | 'recommend'
+    | 'neutral'
+    | 'not_recommend'
+    | 'strongly_not_recommend';
 
   /** Overall fit score 0-100 */
   overallScore: number;
