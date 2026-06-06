@@ -8,9 +8,7 @@ const Progress = React.forwardRef<
 >(({ className, value, ...props }, ref) => {
   const v = value || 0;
   const colorClass =
-    v >= 80 ? 'bg-green-500' :
-    v >= 60 ? 'bg-blue-500' :
-    v >= 40 ? 'bg-yellow-500' : 'bg-red-500';
+    v >= 80 ? 'bg-green-500' : v >= 60 ? 'bg-blue-500' : v >= 40 ? 'bg-yellow-500' : 'bg-red-500';
 
   return (
     <ProgressPrimitive.Root

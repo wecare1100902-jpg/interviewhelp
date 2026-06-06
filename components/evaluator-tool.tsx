@@ -288,7 +288,10 @@ export function EvaluatorTool() {
 
             {/* Job Description */}
             <div>
-              <label htmlFor="jd-input" className="mb-2 flex items-center gap-1.5 text-sm font-medium">
+              <label
+                htmlFor="jd-input"
+                className="mb-2 flex items-center gap-1.5 text-sm font-medium"
+              >
                 <Target className="h-4 w-4 text-muted-foreground" />
                 職缺描述 (Job Description)
                 <span className="text-destructive">*</span>
@@ -305,7 +308,9 @@ export function EvaluatorTool() {
                 <p className="text-xs text-muted-foreground">
                   至少 30 字。越詳細的 JD 評估結果越精準。
                 </p>
-                <span className={`text-xs ${jobDescription.length >= 30 ? 'text-success' : 'text-muted-foreground'}`}>
+                <span
+                  className={`text-xs ${jobDescription.length >= 30 ? 'text-success' : 'text-muted-foreground'}`}
+                >
                   {jobDescription.length} 字
                 </span>
               </div>
@@ -313,7 +318,10 @@ export function EvaluatorTool() {
 
             {/* Job Category */}
             <div>
-              <label htmlFor="category-select" className="mb-2 flex items-center gap-1.5 text-sm font-medium">
+              <label
+                htmlFor="category-select"
+                className="mb-2 flex items-center gap-1.5 text-sm font-medium"
+              >
                 <BarChart3 className="h-4 w-4 text-muted-foreground" />
                 職缺類別
                 <span className="text-xs text-muted-foreground font-normal">（選填）</span>
@@ -418,7 +426,12 @@ export function EvaluatorTool() {
 
 // ── Score Ring SVG ────────────────────────────────────────────────────────────
 
-function ScoreRing({ score, size = 120, strokeWidth = 8, className = '' }: {
+function ScoreRing({
+  score,
+  size = 120,
+  strokeWidth = 8,
+  className = '',
+}: {
   score: number;
   size?: number;
   strokeWidth?: number;
@@ -428,22 +441,35 @@ function ScoreRing({ score, size = 120, strokeWidth = 8, className = '' }: {
   const circumference = 2 * Math.PI * radius;
   const progress = (score / 100) * circumference;
   const color =
-    score >= 90 ? 'stroke-green-500' :
-    score >= 78 ? 'stroke-blue-500' :
-    score >= 60 ? 'stroke-yellow-500' :
-    score >= 40 ? 'stroke-orange-500' : 'stroke-red-500';
+    score >= 90
+      ? 'stroke-green-500'
+      : score >= 78
+        ? 'stroke-blue-500'
+        : score >= 60
+          ? 'stroke-yellow-500'
+          : score >= 40
+            ? 'stroke-orange-500'
+            : 'stroke-red-500';
 
   return (
     <div className={`relative inline-flex items-center justify-center ${className}`}>
       <svg width={size} height={size} className="-rotate-90">
         <circle
-          cx={size / 2} cy={size / 2} r={radius}
-          fill="none" stroke="currentColor" strokeWidth={strokeWidth}
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={strokeWidth}
           className="text-muted/30"
         />
         <circle
-          cx={size / 2} cy={size / 2} r={radius}
-          fill="none" strokeWidth={strokeWidth} strokeLinecap="round"
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
           className={`${color} score-ring`}
           strokeDasharray={circumference}
           strokeDashoffset={circumference - progress}
@@ -513,7 +539,9 @@ function EvaluationReport({
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="leading-relaxed text-muted-foreground">{result.scoreJustification.summary}</p>
+          <p className="leading-relaxed text-muted-foreground">
+            {result.scoreJustification.summary}
+          </p>
         </CardContent>
       </Card>
 
@@ -527,11 +555,36 @@ function EvaluationReport({
         </CardHeader>
         <CardContent className="space-y-5">
           {[
-            { key: 'technicalFit', label: '技術適配度', emoji: '💻', data: result.dimensions.technicalFit },
-            { key: 'experienceRelevance', label: '經驗相關性', emoji: '📋', data: result.dimensions.experienceRelevance },
-            { key: 'achievementQuality', label: '成就品質', emoji: '🏆', data: result.dimensions.achievementQuality },
-            { key: 'cultureFit', label: '文化適配度', emoji: '🤝', data: result.dimensions.cultureFit },
-            { key: 'growthPotential', label: '成長潛力', emoji: '🚀', data: result.dimensions.growthPotential },
+            {
+              key: 'technicalFit',
+              label: '技術適配度',
+              emoji: '💻',
+              data: result.dimensions.technicalFit,
+            },
+            {
+              key: 'experienceRelevance',
+              label: '經驗相關性',
+              emoji: '📋',
+              data: result.dimensions.experienceRelevance,
+            },
+            {
+              key: 'achievementQuality',
+              label: '成就品質',
+              emoji: '🏆',
+              data: result.dimensions.achievementQuality,
+            },
+            {
+              key: 'cultureFit',
+              label: '文化適配度',
+              emoji: '🤝',
+              data: result.dimensions.cultureFit,
+            },
+            {
+              key: 'growthPotential',
+              label: '成長潛力',
+              emoji: '🚀',
+              data: result.dimensions.growthPotential,
+            },
           ].map(({ key, label, emoji, data }) => (
             <div key={key} className="rounded-xl border p-4 transition-colors hover:bg-muted/30">
               <div className="mb-2 flex items-center justify-between">
@@ -539,11 +592,17 @@ function EvaluationReport({
                   <span>{emoji}</span>
                   {label}
                 </span>
-                <span className={`text-sm font-bold ${
-                  data.score >= 16 ? 'text-green-600' :
-                  data.score >= 12 ? 'text-blue-600' :
-                  data.score >= 8 ? 'text-yellow-600' : 'text-red-600'
-                }`}>
+                <span
+                  className={`text-sm font-bold ${
+                    data.score >= 16
+                      ? 'text-green-600'
+                      : data.score >= 12
+                        ? 'text-blue-600'
+                        : data.score >= 8
+                          ? 'text-yellow-600'
+                          : 'text-red-600'
+                  }`}
+                >
                   {data.score} / 20
                 </span>
               </div>
@@ -563,9 +622,21 @@ function EvaluationReport({
           </CardTitle>
         </CardHeader>
         <CardContent className="grid gap-6 md:grid-cols-2">
-          <SkillList title="✅ 高度匹配" items={result.skillsAssessment.strongMatches} color="green" />
-          <SkillList title="🔶 部分匹配" items={result.skillsAssessment.partialMatches} color="yellow" />
-          <SkillList title="❌ 缺少關鍵技能" items={result.skillsAssessment.missingCritical} color="red" />
+          <SkillList
+            title="✅ 高度匹配"
+            items={result.skillsAssessment.strongMatches}
+            color="green"
+          />
+          <SkillList
+            title="🔶 部分匹配"
+            items={result.skillsAssessment.partialMatches}
+            color="yellow"
+          />
+          <SkillList
+            title="❌ 缺少關鍵技能"
+            items={result.skillsAssessment.missingCritical}
+            color="red"
+          />
           <SkillList title="⭐ 額外加分" items={result.skillsAssessment.bonusSkills} color="blue" />
         </CardContent>
       </Card>
@@ -583,7 +654,9 @@ function EvaluationReport({
             <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-green-700">
               <CheckCircle2 className="h-4 w-4" />
               匹配的關鍵字
-              <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs">{result.keywords.matched.length}</span>
+              <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs">
+                {result.keywords.matched.length}
+              </span>
             </h4>
             <div className="flex flex-wrap gap-2">
               {result.keywords.matched.map((kw) => (
@@ -600,7 +673,9 @@ function EvaluationReport({
             <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-red-700">
               <XCircle className="h-4 w-4" />
               缺少的關鍵字
-              <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs">{result.keywords.missing.length}</span>
+              <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs">
+                {result.keywords.missing.length}
+              </span>
             </h4>
             <div className="flex flex-wrap gap-2">
               {result.keywords.missing.map((kw) => (
@@ -631,7 +706,9 @@ function EvaluationReport({
                 <ChevronRight className="h-4 w-4 mt-0.5 shrink-0 text-green-500" />
                 <div>
                   <h4 className="text-sm font-semibold">{s.title}</h4>
-                  <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{s.description}</p>
+                  <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
+                    {s.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -668,7 +745,9 @@ function EvaluationReport({
                           : '低風險'}
                     </span>
                   </div>
-                  <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">{c.description}</p>
+                  <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
+                    {c.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -740,12 +819,7 @@ function EvaluationReport({
 
       {/* Bottom Action */}
       <div className="flex justify-center pb-8">
-        <Button
-          variant="outline"
-          size="lg"
-          onClick={onReset}
-          className="rounded-xl gap-2 px-8"
-        >
+        <Button variant="outline" size="lg" onClick={onReset} className="rounded-xl gap-2 px-8">
           <RotateCcw className="h-4 w-4" />
           評估下一位候選人
         </Button>
@@ -779,7 +853,10 @@ function SkillList({
       <h4 className="mb-3 text-sm font-semibold">{title}</h4>
       <div className="flex flex-wrap gap-2">
         {items.map((item) => (
-          <span key={item} className={`rounded-lg border px-3 py-1 text-xs font-medium ${colorMap[color]}`}>
+          <span
+            key={item}
+            className={`rounded-lg border px-3 py-1 text-xs font-medium ${colorMap[color]}`}
+          >
             {item}
           </span>
         ))}

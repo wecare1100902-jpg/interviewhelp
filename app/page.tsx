@@ -21,10 +21,14 @@ export default function Home() {
         {/* Hero */}
         <section className="relative overflow-hidden hero-gradient">
           {/* Decorative dots */}
-          <div className="absolute inset-0 opacity-30" style={{
-            backgroundImage: 'radial-gradient(circle, hsl(221 83% 53% / 0.15) 1px, transparent 1px)',
-            backgroundSize: '24px 24px',
-          }} />
+          <div
+            className="absolute inset-0 opacity-30"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle, hsl(221 83% 53% / 0.15) 1px, transparent 1px)',
+              backgroundSize: '24px 24px',
+            }}
+          />
           <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-20 sm:py-28 text-center">
             <div className="animate-fade-in">
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
@@ -117,7 +121,9 @@ export default function Home() {
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
             <div className="mb-10 text-center">
               <h2 className="mb-3 text-3xl sm:text-4xl font-bold tracking-tight">候選人評估</h2>
-              <p className="text-lg text-muted-foreground">上傳履歷，AI 為你產生全面的專業評估報告</p>
+              <p className="text-lg text-muted-foreground">
+                上傳履歷，AI 為你產生全面的專業評估報告
+              </p>
             </div>
             <EvaluatorTool />
           </div>
