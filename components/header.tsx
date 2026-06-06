@@ -1,10 +1,11 @@
+import Link from 'next/link';
 import { UserCheck, Sparkles } from 'lucide-react';
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b glass">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <a href="/" className="flex items-center gap-2.5 group">
+        <Link href="/" className="flex items-center gap-2.5 group">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg hero-gradient-strong shadow-sm">
             <UserCheck className="h-5 w-5 text-white" />
           </div>
@@ -12,7 +13,7 @@ export function Header() {
             <span className="text-lg font-bold tracking-tight">InterviewerHelp</span>
             <Sparkles className="h-3.5 w-3.5 text-primary opacity-60 group-hover:opacity-100 transition-opacity" />
           </div>
-        </a>
+        </Link>
         <nav className="flex items-center gap-1 text-sm">
           <a
             href="#how-it-works"
